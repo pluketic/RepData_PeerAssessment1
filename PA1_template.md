@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
 ## Loading and preprocessing the data
@@ -55,16 +50,16 @@ ggplot(steps_per_day, aes(x = date, y = steps)) +
     scale_x_date(labels = date_format("%d-%m-%Y"))
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
 
 - Calculate overall mean of total number of steps taken per day
 
 ```r
-steps_mean   <- round(mean(steps_per_day$steps),2)
-steps_median <- median(steps_per_day$steps, na.rm=TRUE)
+steps_mean   <- round(mean(steps_per_day$steps),0)
+steps_median <- median(steps_per_day$steps)
 ```
 
-##### Mean Steps Taken per Day 10766.19 steps, with median of 10765.
+##### Mean Steps Taken per Day 10766 steps, with median of 10765.
 
 ## What is the average daily activity pattern?
 
@@ -90,7 +85,7 @@ ggplot(steps_per_interval, aes(x=interval, y=steps)) +
         theme_bw()
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 - Find interval with most average steps.
 
@@ -145,7 +140,7 @@ totalPerDayImputed <- ddply(imputed, .(date), summarise, steps=sum(steps))
 hist(totalPerDayImputed$steps, breaks = 20, main="Number of Steps", xlab="Total number of steps taken each day", ylab = "Number of Days", col="blue")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
 
 - Calculate and report the mean and median total number of steps taken per day on the imputed dataset
 
@@ -221,4 +216,4 @@ library(lattice)
 xyplot(steps ~ interval | weekdays, data = average, layout = c(1, 2), type="l", xlab = "Interval", ylab = "Number of steps")
 ```
 
-![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-15-1.png) 

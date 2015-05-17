@@ -165,9 +165,9 @@ median(totalPerDayImputed$steps)
 ## [1] 10766.19
 ```
 
-```r
-# test does these values differ from thoes in the first part
+- Test does these values differ from thoes in the first part
 
+```r
 abs(mean(steps_per_day$steps)-mean(totalPerDayImputed$steps))
 ```
 
@@ -182,12 +182,11 @@ abs(median(steps_per_day$steps)- median(totalPerDayImputed$steps))/median(steps_
 ```
 ## [1] 0.0001104207
 ```
+The mean didn't change after the imputing, the median slightly changed about 0.1% of the original value.
+
+Total steps taken per day difference:
 
 ```r
-# so the mean didn't change after the imputing, the median slightly changed about 0.1% of the original value.
-
-# test how total steps taken per day differ
-
 totalDifference <- sum(imputed$steps) - sum(ActivityNoNAs$steps)
 totalDifference
 ```
@@ -222,4 +221,4 @@ library(lattice)
 xyplot(steps ~ interval | weekdays, data = average, layout = c(1, 2), type="l", xlab = "Interval", ylab = "Number of steps")
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15-1.png) 

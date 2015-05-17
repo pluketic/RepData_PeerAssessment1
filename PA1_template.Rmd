@@ -131,15 +131,17 @@ hist(totalPerDayImputed$steps, breaks = 20, main="Number of Steps", xlab="Total 
 ```{r}
 mean(totalPerDayImputed$steps)
 median(totalPerDayImputed$steps)
-# test does these values differ from thoes in the first part
+```
 
+- Test does these values differ from thoes in the first part
+```{r}
 abs(mean(steps_per_day$steps)-mean(totalPerDayImputed$steps))
-
 abs(median(steps_per_day$steps)- median(totalPerDayImputed$steps))/median(steps_per_day$steps)
-# so the mean didn't change after the imputing, the median slightly changed about 0.1% of the original value.
+```
+The mean didn't change after the imputing, the median slightly changed about 0.1% of the original value.
 
-# test how total steps taken per day differ
-
+Total steps taken per day difference:
+```{r}
 totalDifference <- sum(imputed$steps) - sum(ActivityNoNAs$steps)
 totalDifference
 ```
